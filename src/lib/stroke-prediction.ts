@@ -13,7 +13,7 @@ export interface StrokePredictionResult {
 }
 
 export async function predictStroke(data: StrokeAnalysisInput): Promise<StrokePredictionResult> {
-  const response = await fetch("https://stroke-final.onrender.com/api/predict", {  // ✅ FIXED HERE
+  const response = await fetch("https://stroke-final.onrender.com/api/predict", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,13 +25,5 @@ export async function predictStroke(data: StrokeAnalysisInput): Promise<StrokePr
     throw new Error("Failed to fetch stroke prediction");
   }
 
-  return response.json();
-}
-
-export async function getAnalytics() {
-  const response = await fetch("https://stroke-final.onrender.com/api/analytics"); // ✅ FIXED HERE
-  if (!response.ok) {
-    throw new Error("Failed to fetch analytics");
-  }
   return response.json();
 }
