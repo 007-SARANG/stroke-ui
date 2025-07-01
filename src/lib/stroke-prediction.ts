@@ -29,7 +29,7 @@ export async function predictStroke(data: StrokeAnalysisInput): Promise<StrokePr
 }
 
 export async function getAnalytics() {
-  const response = await fetch("https://your-backend-url.onrender.com/analytics");
+  const response = await fetch("https://stroke-final.onrender.com/analytics");
   if (!response.ok) {
     throw new Error("Failed to fetch analytics");
   }
