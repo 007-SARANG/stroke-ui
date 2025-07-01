@@ -6,16 +6,17 @@ export default function Header() {
   const { theme, setTheme } = useTheme();
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <header className="relative z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div 
-            className="flex items-center space-x-3 cursor-pointer group hover:scale-105 transition-transform duration-300"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          {/* Logo */}
+          <div
+            className="flex items-center gap-3 cursor-pointer group hover:scale-105 transition-transform duration-300"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <div className="w-12 h-12 medical-gradient rounded-xl flex items-center justify-center shadow-lg animate-glow group-hover:shadow-xl transition-shadow duration-300">
               <Brain className="text-white text-xl" />
@@ -24,46 +25,55 @@ export default function Header() {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:to-cyan-500 transition-all duration-300">
                 StrokeAI
               </h1>
-              <p className="text-sm text-muted-foreground group-hover:text-blue-500 transition-colors duration-300">Advanced Risk Prediction</p>
+              <p className="text-sm text-muted-foreground group-hover:text-blue-500 transition-colors duration-300">
+                Advanced Risk Prediction
+              </p>
             </div>
           </div>
-          
-          <nav className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('prediction')}
-              className="text-foreground hover:text-blue-600 transition-colors duration-200 font-medium"
-            >
-              Prediction
-            </button>
-            <button 
-              onClick={() => scrollToSection('analytics')}
-              className="text-foreground hover:text-blue-600 transition-colors duration-200 font-medium"
-            >
-              Analytics
-            </button>
-            <button 
-              onClick={() => scrollToSection('insights')}
-              className="text-foreground hover:text-blue-600 transition-colors duration-200 font-medium"
-            >
-              Insights
-            </button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="mr-2"
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            </Button>
-            <Button 
-              className="medical-gradient text-white hover:shadow-lg transform hover:scale-105 transition-all duration-200 font-medium"
-              onClick={() => scrollToSection('prediction')}
-            >
-              Get Report
-            </Button>
+
+          {/* Nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            <div className="flex items-center gap-6 text-sm font-medium">
+              <button
+                onClick={() => scrollToSection("prediction")}
+                className="text-foreground hover:text-blue-600 transition-colors duration-200"
+              >
+                Prediction
+              </button>
+              <button
+                onClick={() => scrollToSection("analytics")}
+                className="text-foreground hover:text-blue-600 transition-colors duration-200"
+              >
+                Analytics
+              </button>
+              <button
+                onClick={() => scrollToSection("insights")}
+                className="text-foreground hover:text-blue-600 transition-colors duration-200"
+              >
+                Insights
+              </button>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              </Button>
+
+              <Button
+                className="medical-gradient text-white hover:shadow-lg transform hover:scale-105 transition-all duration-200 font-medium"
+                onClick={() => scrollToSection("prediction")}
+              >
+                Get Report
+              </Button>
+            </div>
           </nav>
-          
+
+          {/* Mobile Menu */}
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="text-xl" />
           </Button>
